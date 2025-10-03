@@ -32,7 +32,7 @@
 YOLO 학습 결과는 기본적으로 C:\Users\jinhyeongsik\runs\detect 경로에 저장됩니다.
 본 프로젝트에서는 관리 편의를 위해 D:/project/traffic density/detect 로 이동하여 사용했습니다.
 
-3. Tracking ID 원리를 README에 기술 
+2. Tracking ID 원리를 README에 기술 
 
     - **track 원리**
         1. 첫 번째 차량 등장
