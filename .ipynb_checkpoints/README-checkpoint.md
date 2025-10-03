@@ -36,21 +36,21 @@ YOLO 학습 결과는 기본적으로 C:\Users\jinhyeongsik\runs\detect 경로�
 
     - **track 원리**
         1. 첫 번째 차량 등장
-        - YOLO + `track()`→ 새로운 객체 발견 → `tid = 1` 할당
-        - 처음이라 `prev_x`에 `1`키가 없음 → 조건문(`if tid in prev_x`) 스킵
-        - 마지막에 저장(`prev_x[1] = (cx, cy)`)
+            - YOLO + `track()`→ 새로운 객체 발견 → `tid = 1` 할당
+            - 처음이라 `prev_x`에 `1`키가 없음 → 조건문(`if tid in prev_x`) 스킵
+            - 마지막에 저장(`prev_x[1] = (cx, cy)`)
 
         2. 두 번째 차량 등장
-        - 새로운 객체라 `tid = 2` 할당
-        - 조건문 스킵
-        - 마지막에 저장(`prev_x[2] = (cx, cy)`)
+            - 새로운 객체라 `tid = 2` 할당
+            - 조건문 스킵
+            - 마지막에 저장(`prev_x[2] = (cx, cy)`)
 
         3. 이후 프레임에서 같은 차량들 다시 등장
-        - YOLO 추적 계속 이어지므로
-            - tid = 1 → 여전히 tid = 1
-            - tid = 2 → 여전히 tid = 2
-        - 조건문(`if tid in prev_x`) 만족
-        - 이전 좌표 `px, py = prev_x[tid]`에 저장 가능
-        - 이전 좌표 `px, py`와 현재 좌표 `cx, cy`비교 → 라인 넘었는지 여부 판단
+            - YOLO 추적 계속 이어지므로
+                - tid = 1 → 여전히 tid = 1
+                - tid = 2 → 여전히 tid = 2
+            - 조건문(`if tid in prev_x`) 만족
+            - 이전 좌표 `px, py = prev_x[tid]`에 저장 가능
+            - 이전 좌표 `px, py`와 현재 좌표 `cx, cy`비교 → 라인 넘었는지 여부 판단
 
 
