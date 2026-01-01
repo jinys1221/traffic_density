@@ -51,6 +51,11 @@ YOLOv8 추론 후 결과 영상은 `Video_results/processed_sample_video.mp4` �
 
     7. 동영상 추론 결과를 기반으로, 관심 영역(ROI)을 통과하는 차량을 Tracking ID를 이용해 누적 집계하여 교통량을 산출함.
 
+YOLOv8 추론 후 결과 영상은 `Video_results/traffic_density_analysis.mp4` 에 저장되었습니다.  
+아래 이미지는 결과 영상의 일부 프레임 캡처입니다:
+![Sample Result](Video_results/frame_sample2.jpg)
+➡ 전체 영상은 [traffic_density_analysis.mp4](results/traffic_density_analysis.mp4) 파일에서 확인할 수 있습니다.
+
 ## 추가/수정한 부분
 
 1. 추론 이미지 사이즈 확장
