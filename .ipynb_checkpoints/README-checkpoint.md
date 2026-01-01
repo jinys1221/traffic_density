@@ -31,9 +31,9 @@
     3. 해당 데이터셋을 기반으로 YOLOv8 모델을 추가 훈련함.
     4. 기존 COCO 사전학습 모델로 예측했던 동일 이미지에 대해, 학습된 모델로 다시 예측을 수행하여 성능 변화를 비교함.
 <p align="center">
-      <img src="Before training.png" width="400"><br>
+      <img src="Before training.png" width="300"><br>
       <em>Before training</em>
-      <img src="After training.png" width="400"><br>
+      <img src="After training.png" width="300"><br>
       <em>After training</em>
 </p>
 
