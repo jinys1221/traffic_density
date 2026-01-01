@@ -7,7 +7,8 @@
 <p align="center">
       <img src="Before training.png" width="600"><br>
       <em>Before training</em>
-    </p>
+</p>
+    
     2. 교통 밀도 추정을 목적으로 한 Top-View(탑뷰) 차량 데이터셋을 사용함.
 <p align="center">
   <img src="valid/images/2_mp4-5_jpg.rf.bb490ff3835ac898dedea95c973038f5.jpg" width="200">
@@ -24,10 +25,18 @@
 </p>
 
 <p align="center">
-  <em>Before Training – Validation Images (Top-view Traffic Scenes)</em>
+  <em>Top-view(탑뷰) 차량 데이터셋</em>
 </p>
+
     3. 해당 데이터셋을 기반으로 YOLOv8 모델을 추가 훈련함.
     4. 기존 COCO 사전학습 모델로 예측했던 동일 이미지에 대해, 학습된 모델로 다시 예측을 수행하여 성능 변화를 비교함.
+<p align="center">
+      <img src="Before training.png" width="400"><br>
+      <em>Before training</em>
+      <img src="After training.png" width="400"><br>
+      <em>After training</em>
+</p>
+
     5. 학습 후에 성능이 좋아지긴 했지만 일부 원거리 차량 및 작은 객체 검출 한계가 존재하여, 성능 향상을 위해 다음과 같은 개선을 시도함.
        - 추론 시 입력 이미지 해상도 확장
        - 고해상도 이미지에 대한 타일 기반 추론 적용
