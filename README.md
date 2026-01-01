@@ -9,6 +9,23 @@
       <em>Before training</em>
     </p>
     2. 교통 밀도 추정을 목적으로 한 Top-View(탑뷰) 차량 데이터셋을 사용함.
+<p align="center">
+  <img src="valid/images/1_mp4-0_jpg.rf71f17d5bdbca3f9939ae34558b63288.jpg" width="220">
+  <img src="valid/images/2_mp4-1_jpg.rfb52c12a365fbeb71e302f050538959b.jpg" width="220">
+  <img src="valid/images/2_mp4-5_jpg.rf.bb490ff3835ac898dedea95c973038f5.jpg" width="220">
+  <img src="valid/images/2_mp4-10_jpg.rf.97b46cb44bcae5057b47db4ebbbe9305.jpg" width="220">
+</p>
+
+<p align="center">
+  <img src="valid/images/2_mp4-17_jpg.rf.2948c849931a8eff6c6641d24c1cfc8f.jpg" width="220">
+  <img src="valid/images/2_mp4-22_jpg.rf.7e53e9a475efa9889dc0a74380255e9b.jpg" width="220">
+  <img src="valid/images/3_mp4-2_jpg.rf.fb3ec30812baf2bbaca8718878601bde.jpg" width="220">
+  <img src="valid/images/3_mp4-8_jpg.rf.4a784feddd385032614371ea5cb78fa.jpg" width="220">
+</p>
+
+<p align="center">
+  <em>Before Training – Validation Images (Top-view Traffic Scenes)</em>
+</p>
     3. 해당 데이터셋을 기반으로 YOLOv8 모델을 추가 훈련함.
     4. 기존 COCO 사전학습 모델로 예측했던 동일 이미지에 대해, 학습된 모델로 다시 예측을 수행하여 성능 변화를 비교함.
     5. 학습 후에 성능이 좋아지긴 했지만 일부 원거리 차량 및 작은 객체 검출 한계가 존재하여, 성능 향상을 위해 다음과 같은 개선을 시도함.
