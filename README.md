@@ -5,7 +5,7 @@
 
     1. COCO 데이터셋으로 사전학습된 YOLOv8 모델을 사용하여 교통 영상 이미지에 대해 초기 예측을 수행함.
 <p align="center">
-      <img src="Before training.png" width="600"><br>
+      <img src="Image_results/Before training.jpg" width="600"><br>
       <em>Before training</em>
 </p>
     
@@ -32,12 +32,15 @@
     4. 기존 COCO 사전학습 모델로 예측했던 동일 이미지에 대해, 학습된 모델로 다시 예측을 수행하여 성능 변화를 비교함.
 | Before Training | After Training |
 |---|---|
-| <img src="Before training.png" width="400"> | <img src="After training.png" width="400"> |
+| <img src="Image_result/Before training.jpg" width="400"> | <img src="Image_result/After training.jpg" width="400"> |
 
     5. 학습 후에 성능이 좋아지긴 했지만 일부 원거리 차량 및 작은 객체 검출 한계가 존재하여, 성능 향상을 위해 다음과 같은 개선을 시도함.
        - 추론 시 입력 이미지 해상도 확장
-       - 고해상도 이미지에 대한 타일 기반 추론 적용
        - GPU 제약 범위 내에서 훈련 이미지 크기 확장
+       - 고해상도 이미지에 대한 타일 기반 추론 적용
+| 추론시 이미지 확장 | GPU 제약 범위 내에서 훈련 이미지 크기 확장 | 고해상도 이미지에 대한 타일 기반 추론 적용 |
+|---|---|---|
+| <img src="Image_result/High-resolution Inference.jpg" width="400"> | <img src="Image_result/Training Image Size Expansion.jpg" width="400"> | <img src="Image_result/tiled inference 8tiles.jpg" width="400"> |
     6. 위 개선 과정을 거쳐 학습된 최적의 모델(best model)을 사용하여 동영상 추론을 수행함.
     7. 동영상 추론 결과를 기반으로, 관심 영역(ROI)을 통과하는 차량을 Tracking ID를 이용해 누적 집계하여 교통량을 산출함.
 
