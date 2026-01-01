@@ -41,7 +41,14 @@
 | 추론시 이미지 확장 | GPU 제약 범위 내에서 훈련 이미지 크기 확장 | 고해상도 이미지에 대한 타일 기반 추론 적용 |
 |---|---|---|
 | <img src="Image_results/High-resolution Inference.jpg" width="250"> | <img src="Image_results/Training Image Size Expansion.jpg" width="250"> | <img src="Image_results/tiled inference 8tiles.jpg" width="250"> |
+
     6. 위 개선 과정을 거쳐 학습된 최적의 모델(best model)을 사용하여 동영상 추론을 수행함.
+
+YOLOv8 추론 후 결과 영상은 `Video_results/processed_sample_video.mp4` 에 저장되었습니다.  
+아래 이미지는 결과 영상의 일부 프레임 캡처입니다:
+![Sample Result](Video_results/frame_sample1.jpg)
+➡ 전체 영상은 [processed_sample_video.mp4](Video_results/processed_sample_video.mp4) 파일에서 확인할 수 있습니다.
+
     7. 동영상 추론 결과를 기반으로, 관심 영역(ROI)을 통과하는 차량을 Tracking ID를 이용해 누적 집계하여 교통량을 산출함.
 
 ## 추가/수정한 부분
