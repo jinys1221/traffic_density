@@ -4,7 +4,7 @@
 ## 프로젝트 진행 흐름
 
     1. COCO 데이터셋으로 사전학습된 YOLOv8 모델을 사용하여 교통 영상 이미지에 대해 초기 예측을 수행함.
-    <p align="center">
+<p align="center">
       <img src="Before training.png" width="600"><br>
       <em>Before training</em>
     </p>
