@@ -1,6 +1,23 @@
 본 프로젝트는 Real-Time Traffic Density Estimation with YOLOv8을 참고하여 구현하였습니다. 
 출처: [Real-Time Traffic Density Estimation with YOLOv8](https://www.kaggle.com/code/farzadnekouei/real-time-traffic-density-estimation-with-yolov8/notebook) by Farzad Nekouei (Kaggle)
 
+## 프로젝트 진행 흐름
+
+1. COCO 데이터셋으로 사전학습된 YOLOv8 모델을 사용하여 교통 영상 이미지에 대해 초기 예측을 수행함.
+    ### Before Training (COCO Pretrained Model)
+        - 원거리 차량 일부 미검출
+        - 작은 객체 검출 한계 존재
+        ![](Before%20training.png)
+3. 교통 밀도 추정을 목적으로 한 Top-View(탑뷰) 차량 데이터셋을 사용함.
+4. 해당 데이터셋을 기반으로 YOLOv8 모델을 추가 훈련함.
+5. 기존 COCO 사전학습 모델로 예측했던 동일 이미지에 대해, 학습된 모델로 다시 예측을 수행하여 성능 변화를 비교함.
+6. 학습 후에 성능이 좋아지긴 했지만 일부 원거리 차량 및 작은 객체 검출 한계가 존재하여, 성능 향상을 위해 다음과 같은 개선을 시도함.
+   - 추론 시 입력 이미지 해상도 확장
+   - 고해상도 이미지에 대한 타일 기반 추론 적용
+   - GPU 제약 범위 내에서 훈련 이미지 크기 확장
+7. 위 개선 과정을 거쳐 학습된 최적의 모델(best model)을 사용하여 동영상 추론을 수행함.
+8. 동영상 추론 결과를 기반으로, 관심 영역(ROI)을 통과하는 차량을 Tracking ID를 이용해 누적 집계하여 교통량을 산출함.
+
 ## 추가/수정한 부분
 
 1. 추론 이미지 사이즈 확장
@@ -9,7 +26,6 @@
 2. 훈련 이미지 사이즈 확장
     - 제한된 GPU 환경에서 가능한 범위 내에서 훈련 이미지 크기를 확장함.
         - 기본 512 → 640 으로 조정하여 작은 객체 탐지 성능 개선 시도함.
-        - batch 16에서 2로 조정하여 VRAM 오버 방지, 과적합 방지
     - batch 16에서 2로 조정함으로써 학습 속도 크게 느려짐(epoch당 step ↑)
     - gradient 안정성이 떨어져 loss curve가 요동칠 수 있음.
 
@@ -25,14 +41,9 @@
 5. 주석 한글화
     - 코드 전체 주석을 한글로 바꿔 가독성 높임.
 
-## 기타 개선 사항
+## 메모
 
-1. YOLO 학습 시 결과 저장 경로를 프로젝트 전용 경로로 변경하여 관리함.
-
-YOLO 학습 결과는 기본적으로 C:\Users\jinhyeongsik\runs\detect 경로에 저장됩니다.
-본 프로젝트에서는 관리 편의를 위해 D:/project/traffic density/detect 로 이동하여 사용했습니다.
-
-2. Tracking ID 원리를 README에 기술 
+1. Tracking ID 원리
 
     - **track 원리**
         1. 첫 번째 차량 등장
