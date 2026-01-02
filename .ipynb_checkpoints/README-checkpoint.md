@@ -57,7 +57,7 @@ COCO 사전학습 모델을 기준으로 성능을 비교하고,
 아래 이미지는 결과 영상의 일부 프레임 캡처입니다:
 ![Sample Result](Video_results/frame_sample1.jpg)
 ➡ 전체 결과 영상은 아래 파일에서 확인할 수 있습니다.
-- [processed_sample_video.mp4](Video_results/processed_sample_video.mp4)
+-[processed_sample_video.mp4](Video_results/processed_sample_video.mp4)
 
     7. 동영상 추론 결과를 기반으로, 관심 영역(ROI)을 통과하는 차량을 Tracking ID를 이용해 누적 집계하여 교통량을 산출함.
  
