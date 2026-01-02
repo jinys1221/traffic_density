@@ -1,6 +1,16 @@
 본 프로젝트는 Real-Time Traffic Density Estimation with YOLOv8을 참고하여 구현하였습니다. 
 출처: [Real-Time Traffic Density Estimation with YOLOv8](https://www.kaggle.com/code/farzadnekouei/real-time-traffic-density-estimation-with-yolov8/notebook) by Farzad Nekouei (Kaggle)
 
+## 프로젝트 개요
+
+본 프로젝트는 YOLOv8 기반 객체 탐지를 활용하여 교통 영상에서 차량을 검출하고,
+Tracking ID와 관심 영역(ROI) 기반 누적 카운트 방식을 통해
+프레임 단위 검출이 아닌 실제 교통량에 가까운 교통 밀도를 추정하는 것을 목표로 합니다.
+
+COCO 사전학습 모델을 기준으로 성능을 비교하고,
+해상도 확장, 타일 추론, 학습 이미지 크기 조정 등의 개선을 통해
+원거리 차량 및 소형 객체 검출 성능을 단계적으로 향상시켰습니다.
+
 ## 프로젝트 진행 흐름
 
     1. COCO 데이터셋으로 사전학습된 YOLOv8 모델을 사용하여 교통 영상 이미지에 대해 초기 예측을 수행함.
@@ -43,29 +53,27 @@
 | <img src="Image_results/High-resolution Inference.jpg" width="250"> | <img src="Image_results/Training Image Size Expansion.jpg" width="250"> | <img src="Image_results/tiled inference 8tiles.jpg" width="250"> |
 
     6. 위 개선 과정을 거쳐 학습된 최적의 모델(best model)을 사용하여 동영상 추론을 수행함.
-
-YOLOv8 추론 후 결과 영상은 `Video_results/processed_sample_video.mp4` 에 저장되었습니다.  
+  
 아래 이미지는 결과 영상의 일부 프레임 캡처입니다:
 ![Sample Result](Video_results/frame_sample1.jpg)
-➡ 전체 영상은 [processed_sample_video.mp4](Video_results/processed_sample_video.mp4) 파일에서 확인할 수 있습니다.
+➡ 전체 결과 영상은 아래 파일에서 확인할 수 있습니다.
+- [processed_sample_video.mp4](Video_results/processed_sample_video.mp4)
 
     7. 동영상 추론 결과를 기반으로, 관심 영역(ROI)을 통과하는 차량을 Tracking ID를 이용해 누적 집계하여 교통량을 산출함.
-
-YOLOv8 추론 후 결과 영상은 `Video_results/traffic_density_analysis.mp4` 에 저장되었습니다.  
+ 
 아래 이미지는 결과 영상의 일부 프레임 캡처입니다:
 ![Sample Result](Video_results/frame_sample2.jpg)
-➡ 전체 영상은 [traffic_density_analysis.mp4](results/traffic_density_analysis.mp4) 파일에서 확인할 수 있습니다.
+➡ 전체 영상은 아래에서 확인할 수 있습니다.
+- [traffic_density_analysis.mp4](results/traffic_density_analysis.mp4)
 
 ## 추가/수정한 부분
 
 1. 추론 이미지 사이즈 확장
-    - 기본 640 → 1960 으로 조정하여 원거리 객체 탐지 성능 개선 시도함.
+    - 원거리 객체 탐지 성능 개선 시도함.
 
 2. 훈련 이미지 사이즈 확장
     - 제한된 GPU 환경에서 가능한 범위 내에서 훈련 이미지 크기를 확장함.
-        - 기본 512 → 640 으로 조정하여 작은 객체 탐지 성능 개선 시도함.
-    - batch 16에서 2로 조정함으로써 학습 속도 크게 느려짐(epoch당 step ↑)
-    - gradient 안정성이 떨어져 loss curve가 요동칠 수 있음.
+        - 작은 객체 탐지 성능 개선 시도함.
 
 3. 타일 추론 실험
     - 고해상도 이미지를 타일 단위(8조각)로 나누어 추론하는 방식으로 개선 시도함.
